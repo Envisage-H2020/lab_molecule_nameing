@@ -1,0 +1,69 @@
+body{
+	font-family: arial;
+	margin: 0px; 
+}
+
+#drag{
+}
+
+.drag{
+	cursor: move;
+	z-index: 10;
+}
+
+#table1{
+	background-color: #eee;
+	border-collapse: collapse;
+	margin: 5px;
+}
+
+#table1 td{
+	border: 1px solid white;
+	text-align: center;
+	font-size: 12pt;
+	padding: 2px;
+	min-width: 66px;
+}
+
+#table2{
+	background-color: #eee;
+	border-collapse: collapse;
+	margin: 5px;
+}
+
+#table2 td{
+	border: 1px solid white; 
+	text-align: center;
+	font-size: 12pt;
+	padding: 1px;
+	min-width: 66px;
+}
+
+#itemDetails {
+	height: 32px;
+	/* border: 1px solid white; */
+	text-align: center;
+	font-size: 10pt;
+	padding: 2px;
+}
+
+
+/* blank cells (to create gap between left column and message row) */
+.blank {
+	background-color: white;
+}
+
+.trash {
+	background-color: #0fad81;
+}
+
+div#dropspace table{
+	background-color: white;
+	border-collapse: collapse;
+	margin: 5px;
+	/* max-width: 600px; */
+}
+p {
+	margin-left: 10px;
+}
+

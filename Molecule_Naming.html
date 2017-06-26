@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="jqscripts/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="scripts/redips-drag-min.js"></script>
+		<script type="text/javascript" src="scripts/naming-general2.js"></script>
+		<title>Molecule Naming</title>
+	</head>
+	<body onload='preloadImages()'>
+		<div id="drag">
+			<table id="table1" border="2" BORDERCOLOR="a01919">
+				<colgroup>
+					<col width='350'/>
+					<col width='410'/>
+					<col width='350'/>
+				</colgroup>
+				<tr>
+					<td colspan='3' height='30' style='background-color:#a01919;color:white'><b>GoLab Molecule Naming Lab</b></td>
+				</tr>
+				<tr>
+					<td colspan='1'><img id='intGif1' src='images/anims/a7.gif' width='390' onclick='randChangeGIF(1)'></td>
+					<td style='vertical-align:top' colspan='1'>
+					<br><b>Introduction</b><br><br>
+					Using the GoLab Molecule Naming Lab you select from a list of numbered molecules, are shown the selected molecule diagram, and are asked to name it.
+					<br><br>
+					On the next page use the buttons to create the name of the molecule. Once you think you have correctly named the molecule check to see if you are correct.
+					<br><br>
+					There are 19 different molecules for you to  name. Can you correctly name them all?
+					<br><br>
+					Select a molecule from this list to start the lab:
+					<form>
+						<select id='moleculeSelect2' name='moleculeSelect2' onchange='selectSeries()'>
+							<option value='0'>--none--</option>
+							<option value='1'>Molecule 01</option>
+							<option value='2'>Molecule 02</option>
+							<option value='3'>Molecule 03</option>
+							<option value='4'>Molecule 04</option>
+							<option value='5'>Molecule 05</option>
+							<option value='6'>Molecule 06</option>
+							<option value='7'>Molecule 07</option>
+							<option value='8'>Molecule 08</option>
+							<option value='9'>Molecule 09</option>
+							<option value='10'>Molecule 10</option>
+							<option value='11'>Molecule 11</option>
+							<option value='12'>Molecule 12</option>
+							<option value='13'>Molecule 13</option>
+							<option value='14'>Molecule 14</option>
+							<option value='15'>Molecule 15</option>
+							<option value='16'>Molecule 16</option>
+							<option value='17'>Molecule 17</option>
+							<option value='18'>Molecule 18</option>
+							<option value='19'>Molecule 19</option>
+						</select>
+					</form>
+					
+					<br>
+					<button onclick='stageOne()'>Start the naming lab</button>
+					</td>
+					<td colspan='1'><img id='intGif2' src='images/anims/a19.gif' width='390' onclick='randChangeGIF(2)'></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
