@@ -55,7 +55,7 @@ redipsInit = function () {
 	rd.hover.colorTd = '#9BB3DA';
 	// this function (event handler) is called after element is dropped
 	rd.event.dropped = function () {
-    dataLayer.push({"event": "drop", "event_id": "name_part" });
+    dataLayer.push({"event": "drop", "event_id": answerKey[currentMolecule] });
 
 	};
 	
@@ -88,10 +88,11 @@ function stageOne(){
 	}
 }
 
+// Maybe this function is not used
 function selectSeries(){
 	var atomObj = document.getElementById("moleculeSelect2"); 
 	var atomToSelect = parseInt(atomObj.options[atomObj.selectedIndex].value);
-    dataLayer.push({"event": "select.molecule", "event_value": molString, "event_id": atomToSelect});
+    dataLayer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
 
 	currentMolecule = atomToSelect;
 	numberSelected++;
@@ -101,7 +102,7 @@ function selectSeries2(){
 	var atomObj = document.getElementById("moleculeSelect2"); 
 	var atomToSelect = parseInt(atomObj.options[atomObj.selectedIndex].value);
 	currentMolecule = atomToSelect;
-    dataLayer.push({"event": "select.molecule", "event_id": molString, "event_id": atomToSelect});
+    dataLayer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
 
 	numberSelected++;
 	reset();
@@ -114,7 +115,7 @@ function reset(){
 	molName = '';
 	$('#curName').html(molName);
 	$('#responseTxt').html("");
-    dataLayer.push({"event": "reset", "event_id": molString});
+    dataLayer.push({"event": "reset", "event_id": answerKey[currentMolecule]});
 
 	stageOne();
 }
@@ -124,17 +125,17 @@ function doCheck(){
 	getTableValues();
 	var responseMsg = '';
 	if(molNameCtr == 0){
-        dataLayer.push({"event": "check", "event_id": molString, "event_value": false});
+        dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
 
 		responseMsg = "You have not yet added any name elements.";
 	}else{
 		var answerStr = answerKey[currentMolecule];
 		if(answerStr == molString){
 			numberCorrect++;
-            dataLayer.push({"event": "check", "event_id": molString, "event_value": true});
+            dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": true});
 			doShowAnim();
 		}else{
-            dataLayer.push({"event": "check", "event_id": molString, "event_value": false});
+            dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
 
 			responseMsg = "<b>"+molString+"</b> is not the correct name.";
 
@@ -162,7 +163,7 @@ function doHelp(){
 			var cellContents = table.rows[19].cells[i].innerHTML;
 			saveTable[i] = cellContents;
 		}
-        dataLayer.push({"event": "help", "event_id": molString});
+        dataLayer.push({"event": "help", "event_id": answerKey[currentMolecule]});
 
 		var mainDisplay = helpTable;
 		$('#drag').html(mainDisplay);
