@@ -55,7 +55,7 @@ redipsInit = function () {
 	rd.hover.colorTd = '#9BB3DA';
 	// this function (event handler) is called after element is dropped
 	rd.event.dropped = function () {
-    window.dataLayerer.push({"event": "drop", "event_id": answerKey[currentMolecule] });
+    window.dataLayer.push({"event": "drop", "event_id": answerKey[currentMolecule] });
 
 	};
 	
@@ -75,7 +75,7 @@ else if (window.attachEvent) {
 }
 
 function stageOne(){
-    window.dataLayerer.push({"event": "start", "event_id": "stage_1"});
+    window.dataLayer.push({"event": "start", "event_id": "stage_1"});
 
 	if(currentMolecule > 0){
 		mainTable = mainTableTop+mainTableBottom;
@@ -92,7 +92,7 @@ function stageOne(){
 function selectSeries(){
 	var atomObj = document.getElementById("moleculeSelect2"); 
 	var atomToSelect = parseInt(atomObj.options[atomObj.selectedIndex].value);
-    window.dataLayerer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
+    window.dataLayer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
 
 	currentMolecule = atomToSelect;
 	numberSelected++;
@@ -102,7 +102,7 @@ function selectSeries2(){
 	var atomObj = document.getElementById("moleculeSelect2"); 
 	var atomToSelect = parseInt(atomObj.options[atomObj.selectedIndex].value);
 	currentMolecule = atomToSelect;
-    window.dataLayerer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
+    window.dataLayer.push({"event": "select.molecule", "event_id": answerKey[currentMolecule]});
 
 	numberSelected++;
 	reset();
@@ -115,7 +115,7 @@ function reset(){
 	molName = '';
 	$('#curName').html(molName);
 	$('#responseTxt').html("");
-    window.dataLayerer.push({"event": "reset", "event_id": answerKey[currentMolecule]});
+    window.dataLayer.push({"event": "reset", "event_id": answerKey[currentMolecule]});
 
 	stageOne();
 }
@@ -125,17 +125,17 @@ function doCheck(){
 	getTableValues();
 	var responseMsg = '';
 	if(molNameCtr == 0){
-        window.dataLayerer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
+        window.dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
 
 		responseMsg = "You have not yet added any name elements.";
 	}else{
 		var answerStr = answerKey[currentMolecule];
 		if(answerStr == molString){
 			numberCorrect++;
-            window.dataLayerer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": true});
+            window.dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": true});
 			doShowAnim();
 		}else{
-            window.dataLayerer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
+            window.dataLayer.push({"event": "check", "event_id": answerKey[currentMolecule], "event_value": false});
 
 			responseMsg = "<b>"+molString+"</b> is not the correct name.";
 
@@ -148,7 +148,7 @@ function doCheck(){
 function doShowAnim(){
 	// var mainDisplay = "<table id='table2' border='2' BORDERCOLOR='a01919'> <colgroup> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> </colgroup> <tr> <td colspan='8' height='30' style='background-color:#a01919;color:white'><b>GoLab Molecule Naming Lab for molecule number "+currentMolecule+"</b></td> </tr> <tr> <td colspan='5' id='finalMessage'><h2>Congratulations!!</h3> <br><br> You have correctly named the molecule <b>"+molName+"</b>. <br><br> In this session you have selected "+numberSelected+" and of these you have correctly identified "+numberCorrect+". <br><br> Select another molecule from the list below and see if you can correctly name it. <br><br> <form><select id='moleculeSelect2' name='moleculeSelect2' onchange='selectSeries2()'> <option value='0'>--none--</option> <option value='1'>Molecule 01</option> <option value='2'>Molecule 02</option> <option value='3'>Molecule 03</option> <option value='4'>Molecule 04</option> <option value='5'>Molecule 05</option> <option value='6'>Molecule 06</option> <option value='7'>Molecule 07</option> <option value='8'>Molecule 08</option> <option value='9'>Molecule 09</option> <option value='10'>Molecule 10</option> <option value='11'>Molecule 11</option> <option value='12'>Molecule 12</option> <option value='13'>Molecule 13</option> <option value='14'>Molecule 14</option> <option value='15'>Molecule 15</option> <option value='16'>Molecule 16</option> <option value='17'>Molecule 17</option> <option value='18'>Molecule 18</option> <option value='19'>Molecule 19</option> </select> </form> </td> <td rowspan='2' colspan='3'><img id='mol3D' src='images/anims/a"+currentMolecule+".gif' width='100%'></td> </tr>  <tr> <td colspan='5'><img id='curMol' src='images/molStruct/s"+currentMolecule+".png' width='100%'></td> </tr> </table>";
 	var mainDisplay = "<table id='table2' border='2' BORDERCOLOR='a01919'> <colgroup> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> <col width='150'/> </colgroup> <tr> <td colspan='8' height='30' style='background-color:#a01919;color:white'><b>GoLab Molecule Naming Lab for molecule "+currentMolecule+"</b></td> </tr> <tr> <td colspan='5' id='finalMessage'><h2>Congratulations!!</h3> <br><br> You have correctly named the molecule <b>"+molString+"</b>. <br><br> In this session you have selected "+numberSelected+" and of these you have correctly identified "+numberCorrect+". <br><br> Select another molecule from the list below and see if you can correctly name it. <br><br> <form><select id='moleculeSelect2' name='moleculeSelect2' onchange='selectSeries2()'> <option value='0'>--none--</option> <option value='1'>Molecule 01</option> <option value='2'>Molecule 02</option> <option value='3'>Molecule 03</option> <option value='4'>Molecule 04</option> <option value='5'>Molecule 05</option> <option value='6'>Molecule 06</option> <option value='7'>Molecule 07</option> <option value='8'>Molecule 08</option> <option value='9'>Molecule 09</option> <option value='10'>Molecule 10</option> <option value='11'>Molecule 11</option> <option value='12'>Molecule 12</option> <option value='13'>Molecule 13</option> <option value='14'>Molecule 14</option> <option value='15'>Molecule 15</option> <option value='16'>Molecule 16</option> <option value='17'>Molecule 17</option> <option value='18'>Molecule 18</option> <option value='19'>Molecule 19</option> </select> </form> </td> <td rowspan='2' colspan='3'><img id='mol3D' src='images/anims/a"+currentMolecule+".gif' width='100%'></td> </tr>  <tr> <td colspan='5'><img id='curMol' src='images/molStruct/s"+currentMolecule+".png' width='100%'></td> </tr> </table>";
-    window.dataLayerer.push({"event": "start", "event_id": "stage_3"});
+    window.dataLayer.push({"event": "start", "event_id": "stage_3"});
 
     $('#drag').html(mainDisplay);
 	$("#moleculeSelect2").val(currentMolecule);
@@ -163,7 +163,7 @@ function doHelp(){
 			var cellContents = table.rows[19].cells[i].innerHTML;
 			saveTable[i] = cellContents;
 		}
-        window.dataLayerer.push({"event": "help", "event_id": answerKey[currentMolecule]});
+        window.dataLayer.push({"event": "help", "event_id": answerKey[currentMolecule]});
 
 		var mainDisplay = helpTable;
 		$('#drag').html(mainDisplay);
@@ -225,6 +225,6 @@ function clearBottom(){
 }
 
 function showHelpHTML(){
-    window.dataLayerer.push({"event": "help", "event_id": molString});
+    window.dataLayer.push({"event": "help", "event_id": molString});
 	window.open("Help_Instructions.html","Help and Instructions");
 }
